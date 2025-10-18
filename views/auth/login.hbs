@@ -1,14 +1,19 @@
-<h1>Iniciar sesión</h1>
-{{#if message}}
-  <p style="color: red;">{{message}}</p>
-{{/if}}
+<div class="container mt-5" style="max-width: 400px;">
+  <h3 class="mb-4 text-center">Iniciar sesión</h3>
 
-<form action="/login" method="POST">
-  <label>Email:</label>
-  <input type="text" name="username" required>
+  {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+  {{/if}}
 
-  <label>Contraseña:</label>
-  <input type="password" name="password" required>
-
-  <button type="submit">Entrar</button>
-</form>
+  <form action="/login" method="POST">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input id="email" name="email" type="email" class="form-control" required autocomplete="email">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña:</label>
+      <input id="password" name="password" type="password" class="form-control" required autocomplete="current-password">
+    </div>
+    <button type="submit" class="btn btn-success w-100">Entrar</button>
+  </form>
+</div>

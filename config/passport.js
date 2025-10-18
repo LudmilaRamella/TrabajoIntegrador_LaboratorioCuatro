@@ -1,21 +1,19 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
-const db = require("../config/database"); // tu conexión MySQL o Sequelize
+const Usuario = require("../models/usuario");
 
-module.exports = function(passport) {
+module.exports = function (passport) {
   // Estrategia Local
   passport.use(
-    new LocalStrategy({ usernameField: "username" }, async (username, password, done) => {
+    new LocalStrategy({ usernameField: "email" }, async (email, password, done) => {
       try {
-        // Buscar usuario por username
-        const [rows] = await db.query("SELECT * FROM usuarios WHERE username = ?", [username]);
-        if (rows.length === 0) {
+        // Buscar usuario por email (antes username)
+        const user = await Usuario.findOne({ where: { email } });
+        if (!user) {
           return done(null, false, { message: "Usuario no encontrado" });
         }
 
-        const user = rows[0];
-
-        // Comparar contraseña
+        // Comparar contraseñas
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
           return done(null, false, { message: "Contraseña incorrecta" });
@@ -28,17 +26,15 @@ module.exports = function(passport) {
     })
   );
 
-  // Serialización
-  passport.serializeUser((user, done) => {
-    done(null, user.id);
-  });
+  // Serializar usuario (guarda solo el ID en sesión)
+  passport.serializeUser((user, done) => done(null, user.id));
 
-  // Deserialización
+  // Deserializar (recupera el usuario desde la BD)
   passport.deserializeUser(async (id, done) => {
     try {
-      const [rows] = await db.query("SELECT * FROM usuarios WHERE id = ?", [id]);
-      if (rows.length === 0) return done(new Error("Usuario no encontrado"));
-      done(null, rows[0]);
+      const user = await Usuario.findByPk(id);
+      if (!user) return done(new Error("Usuario no encontrado"));
+      done(null, user);
     } catch (err) {
       done(err);
     }

@@ -1,0 +1,26 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm p-4 text-center">
+        <i class="bi bi-person-circle display-1 text-primary mb-3"></i>
+        <h2 class="fw-bold text-primary mb-3">Perfil del usuario</h2>
+
+        {{#if user}}
+          <p class="lead mb-1">Bienvenido, <strong>{{user.nombre}} {{user.apellido}}</strong></p>
+          <p class="text-muted mb-4">Email: <strong>{{user.email}}</strong></p>
+        {{else}}
+          <p class="text-muted mb-4">No hay datos del usuario activo.</p>
+        {{/if}}
+
+        <div class="d-flex justify-content-center gap-2">
+          <a href="/" class="btn btn-outline-secondary">
+            <i class="bi bi-house-door"></i> Volver al inicio
+          </a>
+          <a href="/logout" class="btn btn-outline-danger">
+            <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

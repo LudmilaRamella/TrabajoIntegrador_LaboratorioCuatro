@@ -1,0 +1,46 @@
+<div class="container py-5">
+  <h2 class="fw-bold mb-4 text-center text-success">🛒 Mi Carrito</h2>
+
+  {{#if carrito}}
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each carrito.ItemCarritos}}
+          <tr>
+            <td>{{Producto.nombre}}</td>
+            <td>$ {{precio_actual}}</td>
+            <td>{{cantidad}}</td>
+            <td>$ {{multiply precio_actual cantidad}}</td>
+            <td>
+              <a href="/carrito/eliminar/{{id}}" class="btn btn-sm btn-outline-danger">
+                <i class="bi bi-trash"></i>
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <div class="text-end">
+      <h5 class="fw-bold">Total: $ {{total}}</h5>
+      <a href="/carrito/confirmar" class="btn btn-success mt-2">
+        <i class="bi bi-check-circle"></i> Confirmar compra
+      </a>
+    </div>
+  {{else}}
+    <p class="text-center text-muted mt-4">Tu carrito está vacío.</p>
+    <div class="text-center mt-3">
+      <a href="/productos" class="btn btn-outline-primary">
+        <i class="bi bi-box"></i> Ver productos
+      </a>
+    </div>
+  {{/if}}
+</div>

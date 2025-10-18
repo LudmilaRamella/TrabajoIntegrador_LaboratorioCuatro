@@ -1,6 +1,6 @@
 // controllers/authController.js
 const bcrypt = require('bcryptjs');
-const User = require('../models/user');
+const User = require('../models/usuario');
 
 const register_get = (req, res) => {
   res.render('auth/register', { title: 'Registro' });

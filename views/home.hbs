@@ -1,36 +1,57 @@
-<div class="text-center mb-5">
-  <h1 class="fw-bold display-5 text-primary">{{mensaje}}</h1>
-  <p class="text-muted">¡Qué bueno verte por acá, {{user.username}} 🐾!</p>
-</div>
+<div class="container py-5">
 
-<div class="row g-4">
-  <div class="col-md-4">
-    <div class="card shadow-sm h-100">
-      <div class="card-body text-center">
-        <h5 class="card-title">Productos</h5>
-        <p class="card-text">Explorá nuestra tienda de artículos para mascotas.</p>
-        <a href="#" class="btn btn-outline-primary">Ver productos</a>
-      </div>
-    </div>
+  <!-- Encabezado de bienvenida -->
+  <div class="text-center mb-5">
+    <h1 class="fw-bold display-5 text-primary">{{mensaje}}</h1>
+    <p class="text-muted fs-5">
+      ¡Qué bueno verte por acá, <strong>{{user.nombre}}</strong> 🛒!
+    </p>
   </div>
 
-  <div class="col-md-4">
-    <div class="card shadow-sm h-100">
-      <div class="card-body text-center">
-        <h5 class="card-title">Mi carrito</h5>
-        <p class="card-text">Revisá los artículos que agregaste y gestioná tu compra.</p>
-        <a href="#" class="btn btn-outline-success">Ir al carrito</a>
-      </div>
-    </div>
-  </div>
+  <!-- Accesos rápidos -->
+  <div class="row g-4 justify-content-center">
 
-  <div class="col-md-4">
-    <div class="card shadow-sm h-100">
-      <div class="card-body text-center">
-        <h5 class="card-title">Perfil</h5>
-        <p class="card-text">Administrá tu cuenta y datos personales.</p>
-        <a href="#" class="btn btn-outline-dark">Editar perfil</a>
+    <!-- Productos -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card border-0 shadow-sm h-100 hover-card">
+        <div class="card-body text-center p-4 d-flex flex-column justify-content-between">
+          <div>
+            <i class="bi bi-box-seam display-5 text-primary mb-3"></i>
+            <h5 class="card-title fw-semibold">Productos</h5>
+            <p class="text-muted mb-4">Explorá el catálogo completo de artículos disponibles.</p>
+          </div>
+          <a href="/catalogo" class="btn btn-outline-primary fw-semibold">Ver productos</a>
+        </div>
       </div>
     </div>
+
+    <!-- Carrito -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card border-0 shadow-sm h-100 hover-card">
+        <div class="card-body text-center p-4 d-flex flex-column justify-content-between">
+          <div>
+            <i class="bi bi-cart3 display-5 text-success mb-3"></i>
+            <h5 class="card-title fw-semibold">Mi carrito</h5>
+            <p class="text-muted mb-4">Revisá los artículos que agregaste y gestioná tu compra.</p>
+          </div>
+          <a href="/carrito" class="btn btn-outline-success fw-semibold">Ir al carrito</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Perfil -->
+    <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="card border-0 shadow-sm h-100 hover-card">
+        <div class="card-body text-center p-4 d-flex flex-column justify-content-between">
+          <div>
+            <i class="bi bi-person-circle display-5 text-dark mb-3"></i>
+            <h5 class="card-title fw-semibold">Perfil</h5>
+            <p class="text-muted mb-4">Actualizá tu información personal y preferencias.</p>
+          </div>
+          <a href="/perfil" class="btn btn-outline-dark fw-semibold">Editar perfil</a>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
