@@ -3,14 +3,23 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "db:sync": "node sync-db.js"
   },
-  "keywords": [],
+  "keywords": [
+    "express",
+    "handlebars",
+    "sequelize",
+    "mysql",
+    "carrito"
+  ],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Aplicación web de carrito de compras con autenticación local y persistencia en MySQL.",
+  "engines": {
+    "node": ">=22.15.0"
+  },
   "dependencies": {
     "@handlebars/allow-prototype-access": "^1.0.5",
     "bcryptjs": "^3.0.2",
@@ -19,11 +28,13 @@
     "express": "^5.1.0",
     "express-handlebars": "^8.0.3",
     "express-session": "^1.18.2",
-    "express-validator": "^7.2.1",
-    "multer": "^2.0.2",
+    "handlebars": "^4.7.9",
     "mysql2": "^3.15.2",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }

@@ -1,4 +1,9 @@
 require("dotenv").config();
+
+if (!process.env.SESSION_SECRET) {
+  throw new Error("Falta definir SESSION_SECRET en las variables de entorno");
+}
+
 const express = require("express");
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -38,7 +43,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(
   session({
-    secret: "secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })
